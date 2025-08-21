@@ -1,104 +1,137 @@
-import { useCallback, useEffect, useState } from "react";
-import { AppBar, Box, ButtonBase, MenuItem, Select, Tooltip, Typography, useTheme } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  ButtonBase,
+  Tooltip,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import "./App.css";
 import QSandboxLogoLight from "./assets/images/q-sandbox-dark.png";
 import QSandboxLogoDark from "./assets/images/q-sandbox-light.png";
 
 import InfoIcon from "@mui/icons-material/Info";
-import { categories } from "./constants";
 import { ShowCategories } from "./ShowCategories";
 import { ShowAction } from "./ShowAction";
-import { DarkModeIcon, LightModeIcon, LogoContainer, ThemeSelectRow } from "./components/Common-styles";
-import {  useThemeStore } from "./atoms/global";
+import {
+  DarkModeIcon,
+  LightModeIcon,
+  ThemeSelectRow,
+} from "./components/Common-styles";
+import { useThemeStore } from "./atoms/global";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useIframe } from "./hooks/useIframeListener";
 
 export function App() {
   const location = useLocation();
   const navigate = useNavigate();
-  useIframe()
+  useIframe();
   const navItems = [
-    { label: 'Qortal Requests', path: '/', id: '/' },
-    { label: 'Framework', path: '/framework/default/getting-started-introduction', id: '/framework' },
-    { label: 'Tutorials', path: '/tutorials', id: '/tutorials' }
+    { label: "Qortal Requests", path: "/", id: "/" },
+    {
+      label: "Framework",
+      path: "/framework/default/getting-started-introduction",
+      id: "/framework",
+    },
+    { label: "Tutorials", path: "/tutorials", id: "/tutorials" },
   ];
 
   const setTheme = useThemeStore((state) => state.setTheme);
-    const theme = useTheme();
-
-
+  const theme = useTheme();
 
   return (
-    <Box sx={{
-      height: '100vh',
-      width: '100%',
-      overflow: 'hidden'
-    }}>
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-      <div className="flex-row">
-        <Tooltip className="tooltip" title="Thanks for using Q-Sandbox! Please contact A-Test or Bester by Q-Mail if something does not seem to not work as expected. Thanks and happy coding!" arrow placement="bottom">
-          <InfoIcon className="info-icon" />
-        </Tooltip>
-        <ThemeSelectRow>
-        {theme.palette.mode === "dark" ? (
-          <LightModeIcon
-            onClickFunc={() => setTheme("light")}
-            color={theme.palette.text.primary}
-            height="22"
-            width="22"
-          />
-        ) : (
-          <DarkModeIcon
-            onClickFunc={() => setTheme("dark")}
-            color={theme.palette.text.primary}
-            height="22"
-            width="22"
-          />
-        )}
-        
-      </ThemeSelectRow>
-        <div className="logo-container">
-          <img className="logo" src={theme.palette.mode === "dark" ? QSandboxLogoDark : QSandboxLogoLight} alt="q-sandbox-logo" />
-          <Box sx={{
-            display: 'flex',
-            marginLeft: 'auto',
-            gap: '25px',
-            paddingRight: '25px'
-          }}>
-            {navItems.map(({ label, path, id }) => {
-        const isActive = id === '/' && location.pathname === '/' ? true : id === '/' ? false : location.pathname?.includes(id);
+    <Box
+      sx={{
+        height: "100vh",
+        width: "100%",
+        overflow: "hidden",
+      }}
+    >
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <div className="flex-row">
+            <Tooltip
+              className="tooltip"
+              title="Thanks for using Q-Sandbox! Please contact A-Test or Bester by Q-Mail if something does not seem to not work as expected. Thanks and happy coding!"
+              arrow
+              placement="bottom"
+            >
+              <InfoIcon className="info-icon" />
+            </Tooltip>
+            <ThemeSelectRow>
+              {theme.palette.mode === "dark" ? (
+                <LightModeIcon
+                  onClickFunc={() => setTheme("light")}
+                  color={theme.palette.text.primary}
+                  height="22"
+                  width="22"
+                />
+              ) : (
+                <DarkModeIcon
+                  onClickFunc={() => setTheme("dark")}
+                  color={theme.palette.text.primary}
+                  height="22"
+                  width="22"
+                />
+              )}
+            </ThemeSelectRow>
+            <div className="logo-container">
+              <img
+                className="logo"
+                src={
+                  theme.palette.mode === "dark"
+                    ? QSandboxLogoDark
+                    : QSandboxLogoLight
+                }
+                alt="q-sandbox-logo"
+              />
+              <Box
+                sx={{
+                  display: "flex",
+                  marginLeft: "auto",
+                  gap: "25px",
+                  paddingRight: "25px",
+                }}
+              >
+                {navItems.map(({ label, path, id }) => {
+                  const isActive =
+                    id === "/" && location.pathname === "/"
+                      ? true
+                      : id === "/"
+                        ? false
+                        : location.pathname?.includes(id);
 
-        return (
-          <ButtonBase
-            key={path}
-            onClick={() => navigate(path)}
-            sx={{
-              borderBottom: isActive ? '2px solid' : '2px solid transparent',
-              color: isActive ? theme.palette.primary : theme.palette.secondary,
-              '&:hover': {
-                borderBottom: '2px solid',
-                color: theme.palette.primary,
-              },
-              transition: 'all 0.2s',
-              paddingBottom: '4px',
-            }}
-          >
-            <Typography>{label}</Typography>
-          </ButtonBase>
-        );
-      })}
-          </Box>
-        </div>
+                  return (
+                    <ButtonBase
+                      key={path}
+                      onClick={() => navigate(path)}
+                      sx={{
+                        borderBottom: isActive
+                          ? "2px solid"
+                          : "2px solid transparent",
+                        color: isActive
+                          ? theme.palette.primary
+                          : theme.palette.secondary,
+                        "&:hover": {
+                          borderBottom: "2px solid",
+                          color: theme.palette.primary,
+                        },
+                        transition: "all 0.2s",
+                        paddingBottom: "4px",
+                      }}
+                    >
+                      <Typography>{label}</Typography>
+                    </ButtonBase>
+                  );
+                })}
+              </Box>
+            </div>
+          </div>
+        </AppBar>
+      </Box>
+      <div className="container">
+        <Outlet />
       </div>
-      </AppBar>
-    </Box>
-    <div className="container">
-    
-     <Outlet />
-    
-    </div>
     </Box>
   );
 }
-

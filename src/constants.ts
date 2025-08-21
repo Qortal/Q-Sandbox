@@ -1,5 +1,17 @@
-
-export const categories = ['Payment', 'Account', 'Poll', 'List', 'Data', 'Chat', 'Group', 'AT', 'Blocks', 'Transactions', 'System', 'Other']
+export const categories = [
+  "Payment",
+  "Account",
+  "Poll",
+  "List",
+  "Data",
+  "Chat",
+  "Group",
+  "AT",
+  "Blocks",
+  "Transactions",
+  "System",
+  "Other",
+];
 
 export const actions = {
   GET_USER_ACCOUNT: {
@@ -7,21 +19,21 @@ export const actions = {
     isTx: false,
     requiresApproval: true,
     isGatewayDisabled: false,
-    explanation: ""
+    explanation: "",
   },
   DECRYPT_DATA: {
     category: "Data",
     isTx: false,
     requiresApproval: false,
     isGatewayDisabled: false,
-    explaination: ""
+    explaination: "",
   },
   SEND_COIN: {
     category: "Payment",
     isTx: true,
     requiresApproval: true,
     isGatewayDisabled: null,
-    isGatewayDisabledExplanation: "Only QORT is permitted through gateways"
+    isGatewayDisabledExplanation: "Only QORT is permitted through gateways",
   },
   GET_LIST_ITEMS: {
     category: "List",
@@ -56,7 +68,7 @@ export const actions = {
   SEND_CHAT_MESSAGE: {
     category: "Chat",
     isTx: true,
-    txType: 'Unconfirmed',
+    txType: "Unconfirmed",
     requiresApproval: true,
     isGatewayDisabled: false,
   },
@@ -147,19 +159,19 @@ export const actions = {
   CREATE_TRADE_BUY_ORDER: {
     category: "Payment",
     isTx: true,
-    requiresApproval: true, 
+    requiresApproval: true,
     isGatewayDisabled: false,
   },
   CREATE_TRADE_SELL_ORDER: {
     category: "Payment",
     isTx: true,
-    requiresApproval: true, 
+    requiresApproval: true,
     isGatewayDisabled: true,
   },
   CANCEL_TRADE_SELL_ORDER: {
     category: "Payment",
     isTx: true,
-    requiresApproval: true, 
+    requiresApproval: true,
     isGatewayDisabled: true,
   },
   IS_USING_PUBLIC_NODE: {
@@ -178,6 +190,12 @@ export const actions = {
     category: "Other",
     isTx: true,
     requiresApproval: true,
+    isGatewayDisabled: false,
+  },
+  SHOW_PDF_READER: {
+    category: "Other",
+    isTx: false,
+    requiresApproval: false,
     isGatewayDisabled: false,
   },
   PUBLISH_MULTIPLE_QDN_RESOURCES: {
@@ -248,10 +266,10 @@ export const actions = {
     isGatewayDisabled: false,
   },
   SHOW_ACTIONS: {
-    category: 'System',
+    category: "System",
     isTx: false,
     requiresApproval: false,
-    isGatewayDisabled: false
+    isGatewayDisabled: false,
   },
   GET_ACCOUNT_DATA: {
     category: "Account",
@@ -478,143 +496,242 @@ export const actions = {
   },
 };
 
+export const formatBytes = (bytes: number, decimals = 2) => {
+  if (!+bytes) return "0 Bytes";
+
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+};
+
+const sizeLabel = (size: number) => formatBytes(size, 0);
+
+const minSize = 500 * 1024;
+const smallSize = 1 * 1024 * 1024;
+const mediumSize = 10 * 1024 * 1024;
+const largeSize = 50 * 1024 * 1024;
+const maxSize = 2 * 1024 * 1024 * 1024;
+
 export const services = [
-  { name: "ARBITRARY_DATA", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "QCHAT_ATTACHMENT", sizeInBytes: 1 * 1024 * 1024, sizeLabel: "1 MB" },
-  { name: "ATTACHMENT", sizeInBytes: 50 * 1024 * 1024, sizeLabel: "50 MB" },
-  { name: "FILE", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "FILES", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "CHAIN_DATA", sizeInBytes: 239, sizeLabel: "239 B" },
-  { name: "WEBSITE", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "IMAGE", sizeInBytes: 10 * 1024 * 1024, sizeLabel: "10 MB" },
-  { name: "THUMBNAIL", sizeInBytes: 500 * 1024, sizeLabel: "500 KB" },
-  { name: "QCHAT_IMAGE", sizeInBytes: 500 * 1024, sizeLabel: "500 KB" },
-  { name: "VIDEO", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "AUDIO", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "QCHAT_AUDIO", sizeInBytes: 10 * 1024 * 1024, sizeLabel: "10 MB" },
-  { name: "QCHAT_VOICE", sizeInBytes: 10 * 1024 * 1024, sizeLabel: "10 MB" },
-  { name: "VOICE", sizeInBytes: 10 * 1024 * 1024, sizeLabel: "10 MB" },
-  { name: "PODCAST", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "BLOG", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "BLOG_POST", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "BLOG_COMMENT", sizeInBytes: 500 * 1024, sizeLabel: "500 KB" },
-  { name: "DOCUMENT", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "LIST", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "PLAYLIST", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "APP", sizeInBytes: 50 * 1024 * 1024, sizeLabel: "50 MB" },
-  { name: "METADATA", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
+  {
+    name: "ARBITRARY_DATA",
+    sizeInBytes: maxSize,
+    sizeLabel: sizeLabel(maxSize),
+  },
+  {
+    name: "QCHAT_ATTACHMENT",
+    sizeInBytes: smallSize,
+    sizeLabel: sizeLabel(smallSize),
+  },
+  {
+    name: "ATTACHMENT",
+    sizeInBytes: largeSize,
+    sizeLabel: sizeLabel(largeSize),
+  },
+  { name: "FILE", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  { name: "FILES", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  { name: "CHAIN_DATA", sizeInBytes: 239, sizeLabel: "239 Bytes" },
+  {
+    name: "WEBSITE",
+    sizeInBytes: maxSize,
+    sizeLabel: sizeLabel(maxSize),
+  },
+  { name: "IMAGE", sizeInBytes: mediumSize, sizeLabel: sizeLabel(mediumSize) },
+  { name: "THUMBNAIL", sizeInBytes: minSize, sizeLabel: sizeLabel(minSize) },
+  { name: "QCHAT_IMAGE", sizeInBytes: minSize, sizeLabel: sizeLabel(minSize) },
+  { name: "VIDEO", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  { name: "AUDIO", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  {
+    name: "QCHAT_AUDIO",
+    sizeInBytes: mediumSize,
+    sizeLabel: sizeLabel(mediumSize),
+  },
+  {
+    name: "QCHAT_VOICE",
+    sizeInBytes: mediumSize,
+    sizeLabel: sizeLabel(mediumSize),
+  },
+  { name: "VOICE", sizeInBytes: mediumSize, sizeLabel: sizeLabel(mediumSize) },
+  {
+    name: "PODCAST",
+    sizeInBytes: maxSize,
+    sizeLabel: sizeLabel(maxSize),
+  },
+  { name: "BLOG", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  {
+    name: "BLOG_POST",
+    sizeInBytes: maxSize,
+    sizeLabel: sizeLabel(maxSize),
+  },
+  { name: "BLOG_COMMENT", sizeInBytes: minSize, sizeLabel: sizeLabel(minSize) },
+  {
+    name: "DOCUMENT",
+    sizeInBytes: maxSize,
+    sizeLabel: sizeLabel(maxSize),
+  },
+  { name: "LIST", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  {
+    name: "PLAYLIST",
+    sizeInBytes: maxSize,
+    sizeLabel: sizeLabel(maxSize),
+  },
+  { name: "APP", sizeInBytes: largeSize, sizeLabel: sizeLabel(largeSize) },
+  {
+    name: "METADATA",
+    sizeInBytes: maxSize,
+    sizeLabel: sizeLabel(maxSize),
+  },
   { name: "JSON", sizeInBytes: 25 * 1024, sizeLabel: "25 KB" },
   { name: "GIF_REPOSITORY", sizeInBytes: 25 * 1024 * 1024, sizeLabel: "25 MB" },
-  { name: "STORE", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "PRODUCT", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "OFFER", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "COUPON", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "CODE", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "PLUGIN", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "EXTENSION", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "GAME", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "ITEM", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "NFT", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "DATABASE", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "SNAPSHOT", sizeInBytes: 500 * 1024 * 1024, sizeLabel: "500 MB" },
-  { name: "COMMENT", sizeInBytes: 500 * 1024, sizeLabel: "500 KB" },
+  { name: "STORE", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  {
+    name: "PRODUCT",
+    sizeInBytes: maxSize,
+    sizeLabel: sizeLabel(maxSize),
+  },
+  { name: "OFFER", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  { name: "COUPON", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  { name: "CODE", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  { name: "PLUGIN", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  {
+    name: "EXTENSION",
+    sizeInBytes: maxSize,
+    sizeLabel: sizeLabel(maxSize),
+  },
+  { name: "GAME", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  { name: "ITEM", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  { name: "NFT", sizeInBytes: maxSize, sizeLabel: sizeLabel(maxSize) },
+  {
+    name: "DATABASE",
+    sizeInBytes: maxSize,
+    sizeLabel: sizeLabel(maxSize),
+  },
+  {
+    name: "SNAPSHOT",
+    sizeInBytes: maxSize,
+    sizeLabel: sizeLabel(maxSize),
+  },
+  { name: "COMMENT", sizeInBytes: minSize, sizeLabel: sizeLabel(minSize) },
   { name: "CHAIN_COMMENT", sizeInBytes: 239, sizeLabel: "239 B" },
-  { name: "MAIL", sizeInBytes: 1 * 1024 * 1024, sizeLabel: "1 MB" },
-  { name: "MESSAGE", sizeInBytes: 1 * 1024 * 1024, sizeLabel: "1 MB" },
-  { name: "IMAGE_PRIVATE", sizeInBytes: 10 * 1024 * 1024, sizeLabel: "10 MB" },
-  { name: "VOICE_PRIVATE", sizeInBytes: 10 * 1024 * 1024, sizeLabel: "10 MB" },
+  { name: "MAIL", sizeInBytes: smallSize, sizeLabel: sizeLabel(smallSize) },
+  { name: "MESSAGE", sizeInBytes: smallSize, sizeLabel: sizeLabel(smallSize) },
+  {
+    name: "IMAGE_PRIVATE",
+    sizeInBytes: mediumSize,
+    sizeLabel: sizeLabel(mediumSize),
+  },
+  {
+    name: "VOICE_PRIVATE",
+    sizeInBytes: mediumSize,
+    sizeLabel: sizeLabel(mediumSize),
+  },
   { name: "MAIL_PRIVATE", sizeInBytes: 5 * 1024 * 1024, sizeLabel: "5 MB" },
-  { name: "MESSAGE_PRIVATE", sizeInBytes: 1 * 1024 * 1024, sizeLabel: "1 MB" },
-  { name: "QCHAT_ATTACHMENT_PRIVATE", sizeInBytes: 1 * 1024 * 1024, sizeLabel: "1 MB" },
-  { name: "ATTACHMENT_PRIVATE", sizeInBytes: 50 * 1024 * 1024, sizeLabel: "50 MB" }
+  {
+    name: "MESSAGE_PRIVATE",
+    sizeInBytes: smallSize,
+    sizeLabel: sizeLabel(smallSize),
+  },
+  {
+    name: "QCHAT_ATTACHMENT_PRIVATE",
+    sizeInBytes: smallSize,
+    sizeLabel: sizeLabel(smallSize),
+  },
+  {
+    name: "ATTACHMENT_PRIVATE",
+    sizeInBytes: largeSize,
+    sizeLabel: sizeLabel(largeSize),
+  },
 ];
-
 
 export const coins = [
   {
-    name: "QORT"
+    name: "QORT",
   },
   {
-    name: "BTC"
+    name: "BTC",
   },
   {
-    name: "LTC"
+    name: "LTC",
   },
   {
-    name: "DOGE"
+    name: "DOGE",
   },
   {
-    name: "DGB"
+    name: "DGB",
   },
   {
-    name: "RVN"
+    name: "RVN",
   },
   {
-    name: "ARRR"
-  }
-]
+    name: "ARRR",
+  },
+];
 
 export const foreignBlockchains = [
   {
-    name: "LITECOIN"
+    name: "LITECOIN",
   },
   {
-    name: "BITCOIN"
+    name: "BITCOIN",
   },
   {
-    name: "DOGECOIN"
+    name: "DOGECOIN",
   },
   {
-    name: "DIGIBYTE"
+    name: "DIGIBYTE",
   },
   {
-    name: "RAVENCOIN"
+    name: "RAVENCOIN",
   },
   {
-    name: "PIRATECHAIN"
-  }
-]
+    name: "PIRATECHAIN",
+  },
+];
 
 export const txTypes = [
-  { name: 'GENESIS' },
-  { name: 'PAYMENT' },
-  { name: 'REGISTER_NAME' },
-  { name: 'UPDATE_NAME' },
-  { name: 'SELL_NAME' },
-  { name: 'CANCEL_SELL_NAME' },
-  { name: 'BUY_NAME' },
-  { name: 'CREATE_POLL' },
-  { name: 'VOTE_ON_POLL' },
-  { name: 'ARBITRARY' },
-  { name: 'ISSUE_ASSET' },
-  { name: 'TRANSFER_ASSET' },
-  { name: 'CREATE_ASSET_ORDER' },
-  { name: 'CANCEL_ASSET_ORDER' },
-  { name: 'MULTI_PAYMENT' },
-  { name: 'DEPLOY_AT' },
-  { name: 'MESSAGE' },
-  { name: 'CHAT' },
-  { name: 'PUBLICIZE' },
-  { name: 'AIRDROP' },
-  { name: 'AT' },
-  { name: 'CREATE_GROUP' },
-  { name: 'UPDATE_GROUP' },
-  { name: 'ADD_GROUP_ADMIN' },
-  { name: 'REMOVE_GROUP_ADMIN' },
-  { name: 'GROUP_BAN' },
-  { name: 'CANCEL_GROUP_BAN' },
-  { name: 'GROUP_KICK' },
-  { name: 'GROUP_INVITE' },
-  { name: 'CANCEL_GROUP_INVITE' },
-  { name: 'JOIN_GROUP' },
-  { name: 'LEAVE_GROUP' },
-  { name: 'GROUP_APPROVAL' },
-  { name: 'SET_GROUP' },
-  { name: 'UPDATE_ASSET' },
-  { name: 'ACCOUNT_FLAGS' },
-  { name: 'ENABLE_FORGING' },
-  { name: 'REWARD_SHARE' },
-  { name: 'ACCOUNT_LEVEL' },
-  { name: 'TRANSFER_PRIVS' },
-  { name: 'PRESENCE' }
+  { name: "GENESIS" },
+  { name: "PAYMENT" },
+  { name: "REGISTER_NAME" },
+  { name: "UPDATE_NAME" },
+  { name: "SELL_NAME" },
+  { name: "CANCEL_SELL_NAME" },
+  { name: "BUY_NAME" },
+  { name: "CREATE_POLL" },
+  { name: "VOTE_ON_POLL" },
+  { name: "ARBITRARY" },
+  { name: "ISSUE_ASSET" },
+  { name: "TRANSFER_ASSET" },
+  { name: "CREATE_ASSET_ORDER" },
+  { name: "CANCEL_ASSET_ORDER" },
+  { name: "MULTI_PAYMENT" },
+  { name: "DEPLOY_AT" },
+  { name: "MESSAGE" },
+  { name: "CHAT" },
+  { name: "PUBLICIZE" },
+  { name: "AIRDROP" },
+  { name: "AT" },
+  { name: "CREATE_GROUP" },
+  { name: "UPDATE_GROUP" },
+  { name: "ADD_GROUP_ADMIN" },
+  { name: "REMOVE_GROUP_ADMIN" },
+  { name: "GROUP_BAN" },
+  { name: "CANCEL_GROUP_BAN" },
+  { name: "GROUP_KICK" },
+  { name: "GROUP_INVITE" },
+  { name: "CANCEL_GROUP_INVITE" },
+  { name: "JOIN_GROUP" },
+  { name: "LEAVE_GROUP" },
+  { name: "GROUP_APPROVAL" },
+  { name: "SET_GROUP" },
+  { name: "UPDATE_ASSET" },
+  { name: "ACCOUNT_FLAGS" },
+  { name: "ENABLE_FORGING" },
+  { name: "REWARD_SHARE" },
+  { name: "ACCOUNT_LEVEL" },
+  { name: "TRANSFER_PRIVS" },
+  { name: "PRESENCE" },
 ];
