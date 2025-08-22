@@ -9,10 +9,7 @@ import {
 import "./App.css";
 import QSandboxLogoLight from "./assets/images/q-sandbox-dark.png";
 import QSandboxLogoDark from "./assets/images/q-sandbox-light.png";
-
 import InfoIcon from "@mui/icons-material/Info";
-import { ShowCategories } from "./ShowCategories";
-import { ShowAction } from "./ShowAction";
 import {
   DarkModeIcon,
   LightModeIcon,
@@ -26,6 +23,7 @@ export function App() {
   const location = useLocation();
   const navigate = useNavigate();
   useIframe();
+
   const navItems = [
     { label: "Qortal Requests", path: "/", id: "/" },
     {
@@ -49,32 +47,7 @@ export function App() {
     >
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
-          <div className="flex-row">
-            <Tooltip
-              className="tooltip"
-              title="Thanks for using Q-Sandbox! Please contact A-Test or Bester by Q-Mail if something does not seem to not work as expected. Thanks and happy coding!"
-              arrow
-              placement="bottom"
-            >
-              <InfoIcon className="info-icon" />
-            </Tooltip>
-            <ThemeSelectRow>
-              {theme.palette.mode === "dark" ? (
-                <LightModeIcon
-                  onClickFunc={() => setTheme("light")}
-                  color={theme.palette.text.primary}
-                  height="22"
-                  width="22"
-                />
-              ) : (
-                <DarkModeIcon
-                  onClickFunc={() => setTheme("dark")}
-                  color={theme.palette.text.primary}
-                  height="22"
-                  width="22"
-                />
-              )}
-            </ThemeSelectRow>
+          <div className="flex-row">         
             <div className="logo-container">
               <img
                 className="logo"
@@ -126,9 +99,19 @@ export function App() {
                 })}
               </Box>
             </div>
+
+            <Tooltip
+              className="tooltip"
+              title="Thanks for using Q-Sandbox! Please contact A-Test or Bester by Q-Mail if something does not seem to not work as expected. Thanks and happy coding!"
+              arrow
+              placement="bottom"
+            >
+              <InfoIcon className="info-icon" />
+            </Tooltip>
           </div>
         </AppBar>
       </Box>
+
       <div className="container">
         <Outlet />
       </div>
