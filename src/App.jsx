@@ -13,7 +13,8 @@ import InfoIcon from "@mui/icons-material/Info";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useIframe } from "./hooks/useIframeListener";
 import ThemeProviderWrapper from "./styles/theme-provider.tsx";
-import { EnumTheme } from "./state/global/theme.ts";
+import { EnumTheme, themeAtom } from "./state/global/theme.ts";
+import { useAtom } from "jotai";
 
 export function App() {
   const location = useLocation();
@@ -30,6 +31,7 @@ export function App() {
     { label: "Tutorials", path: "/tutorials", id: "/tutorials" },
   ];
 
+  const [selectedTheme] = useAtom(themeAtom);
   const theme = useTheme();
 
   return (
@@ -47,11 +49,7 @@ export function App() {
               <div className="logo-container">
                 <img
                   className="logo"
-                  src={
-                    theme === EnumTheme.LIGHT
-                      ? QSandboxLogoDark
-                      : QSandboxLogoLight
-                  }
+                  src={selectedTheme === EnumTheme.DARK ? QSandboxLogoDark : QSandboxLogoLight}
                   alt="q-sandbox-logo"
                 />
                 <Box
