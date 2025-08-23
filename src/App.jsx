@@ -10,6 +10,14 @@ import "./App.css";
 import QSandboxLogoLight from "./assets/images/q-sandbox-dark.png";
 import QSandboxLogoDark from "./assets/images/q-sandbox-light.png";
 import InfoIcon from "@mui/icons-material/Info";
+import { ShowCategories } from "./ShowCategories";
+import { ShowAction } from "./ShowAction";
+import {
+  DarkModeIcon,
+  LightModeIcon,
+  ThemeSelectRow,
+} from "./components/Common-styles";
+import { useThemeStore } from "./atoms/global";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useIframe } from "./hooks/useIframeListener";
 import ThemeProviderWrapper from "./styles/theme-provider.tsx";
@@ -20,7 +28,6 @@ export function App() {
   const location = useLocation();
   const navigate = useNavigate();
   useIframe();
-
   const navItems = [
     { label: "Qortal Requests", path: "/", id: "/" },
     {
