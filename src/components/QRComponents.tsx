@@ -1,5 +1,4 @@
 import { Box, Card, Typography } from '@mui/material'
-import React from 'react'
 import InfoIcon from '@mui/icons-material/Info';
 
 export const GeneralExplanation = ({children}) => {
