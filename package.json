@@ -15,7 +15,7 @@
     "@uiw/react-json-view": "^2.0.0-alpha.30",
     "base-x": "^5.0.0",
     "copy-to-clipboard": "^3.3.3",
-    "jotai": "^2.13.0",
+    "jotai": "^2.13.1",
     "js-beautify": "^1.15.1",
     "prettier": "^3.3.3",
     "prism-react-renderer": "^2.4.0",

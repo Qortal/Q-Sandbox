@@ -1,4 +1,3 @@
-import React from "react";
 import { DocContainer } from "../../components/Containers";
 import {
   SectionSubTitle,
@@ -6,9 +5,7 @@ import {
   SingleText,
 } from "../../components/Texts";
 import { Spacer } from "../../../components/Spacer";
-import { FeatureList } from "../../components/FeatureList";
 import { DisplayCode } from "../../../components/DisplayCode";
-import { PropsTable } from "../../components/PropsTable";
 import { Box, Card, Typography } from "@mui/material";
 import { CodePropsTable } from "../../components/CodePropsTable";
 
@@ -16,8 +13,8 @@ const codeblock1 = `
 import { useAuth } from "qapp-core";
 
 const auth = useAuth();
-const publicKey = auth?.publicKey
-console.log(publicKey)
+const publicKey = auth?.publicKey;
+console.log(publicKey);
 `.trim();
 
 

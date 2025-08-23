@@ -1,6 +1,4 @@
-import React from "react";
 import {
-  Box,
   Typography,
   Paper,
   Divider,

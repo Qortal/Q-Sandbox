@@ -3,7 +3,6 @@ import { Highlight, themes } from "prism-react-renderer";
 import copy from "copy-to-clipboard";
 import { Tooltip } from "@mui/material";
 import { CodeWrapper, CopyCodeIcon, DisplayCodePre } from "./Common-styles";
-import { useTheme } from "@mui/material";
 
 export const DisplayCode = ({ codeBlock, language = "javascript", hideLines, hideCopy }) => {
 

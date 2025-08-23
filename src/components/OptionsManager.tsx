@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { TextField, Button, Chip, Box, Stack, IconButton } from "@mui/material";
-import { Edit, Delete } from "@mui/icons-material";
+import { useState } from "react";
+import { TextField, Button, Chip, Box, Stack } from "@mui/material";
 
 export function OptionsManager({ items, setItems, label = "Item" , maxLength}) {
   const [inputValue, setInputValue] = useState("");

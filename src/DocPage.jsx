@@ -9,7 +9,6 @@ import { DisplayingAList } from "./docs/default/lists/DisplayingAList";
 import { AddingToAList } from "./docs/default/lists/AddingToAList";
 import { UpdatingAList } from "./docs/default/lists/UpdatingAList";
 import { RemovingFromAList } from "./docs/default/lists/RemovingFromAList";
-import { FetchingDirectlyAList } from "./docs/default/lists/FetchingDirectlyAList";
 import { FetchingData } from "./docs/default/publishes/FetchingData";
 import { UpdatingData } from "./docs/default/publishes/UpdatingData";
 import { DeletingData } from "./docs/default/publishes/DeletingData";
