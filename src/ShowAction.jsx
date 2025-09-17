@@ -24,6 +24,7 @@ import { ADD_LIST_ITEMS } from "./actions/ADD_LIST_ITEMS.jsx";
 import { DELETE_LIST_ITEM } from "./actions/DELETE_LIST_ITEM.jsx";
 import { IS_USING_PUBLIC_NODE } from "./actions/IS_USING_PUBLIC_NODE.jsx";
 import { ADMIN_ACTION } from "./actions/ADMIN_ACTION.jsx";
+import { SHOW_PDF_READER } from "./actions/SHOW_PDF_READER.tsx";
 import { SIGN_TRANSACTION } from "./actions/SIGN_TRANSACTION.jsx";
 import { DEPLOY_AT } from "./actions/DEPLOY_AT.jsx";
 import { JOIN_GROUP } from "./actions/JOIN_GROUP.jsx";
@@ -252,6 +253,8 @@ export const ShowAction = ({ selectedAction, handleClose, myAddress }) => {
         return CANCEL_SELL_NAME;
       case "BUY_NAME":
         return BUY_NAME;
+      case "SHOW_PDF_READER":
+        return SHOW_PDF_READER;
       default:
         return EmptyActionComponent;
     }
