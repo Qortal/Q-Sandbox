@@ -51,6 +51,7 @@ export const PUBLISH_QDN_RESOURCE = () => {
     title: "",
     description: "",
     tags: [],
+    isMultiFileZip: false
   });
   const [dataType, setDataType] = useState("file");
 
@@ -127,6 +128,7 @@ export const PUBLISH_QDN_RESOURCE = () => {
     description: "${requestData?.description}", 
     category: "${requestData?.category}", 
     tags: ${JSON.stringify(requestData?.tags)}, 
+    isMultiFileZip: ${requestData.isMultiFileZip},
     ${handleAppFee}
     ${handleAppFeeRecipient}
     ${handlePublicKeys}
@@ -223,6 +225,7 @@ export const PUBLISH_QDN_RESOURCE = () => {
         description: requestData?.description,
         category: requestData?.category,
         tags: requestData?.tags,
+        isMultiFileZip: requestData?.isMultiFileZip,
         ...dynamicFields,
       });
 
@@ -239,6 +242,15 @@ export const PUBLISH_QDN_RESOURCE = () => {
       return {
         ...prev,
         [e.target.name]: e.target.value,
+      };
+    });
+  };
+
+    const handleChangeCheckbox = (e, val) => {
+    setRequestData((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: val,
       };
     });
   };
@@ -738,6 +750,46 @@ export const PUBLISH_QDN_RESOURCE = () => {
             </FieldExplanation>
             <Spacer height="5px" />
             <Typography>Optionally put up to 5 tags.</Typography>
+          </Box>
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">isMultiFileZip</Typography>
+            <Spacer height="10px" />
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Checkbox
+                onChange={handleChangeCheckbox}
+                checked={requestData.isMultiFileZip}
+                edge="start"
+                tabIndex={-1}
+                disableRipple
+                name="isMultiFileZip"
+              />
+              <Typography
+                sx={{
+                  fontSize: "14px",
+                }}
+              >
+                isMultiFileZip
+              </Typography>
+            </Box>
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Optional field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>
+              This shouldn't be put to true if the resource is to be encrypted. Also use File instead of base64.
+            </Typography>
           </Box>
           <Spacer height="20px" />
           <Button

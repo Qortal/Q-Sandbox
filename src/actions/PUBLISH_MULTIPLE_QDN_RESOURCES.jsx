@@ -56,7 +56,8 @@ export const PUBLISH_MULTIPLE_QDN_RESOURCES = () => {
     category: "",
     title: "",
     description: "",
-    tags: []
+    tags: [],
+    isMultiFileZip: false
   });
   const [dataType, setDataType] = useState("file");
 
@@ -74,9 +75,7 @@ export const PUBLISH_MULTIPLE_QDN_RESOURCES = () => {
   const [isEncrypted, setIsEncrypted] = useState(false);
   const [isOpenAddResource, setIsOpenAddResource] = useState(false);
   const [categories, setCategories] = useState([]);
-  const [responseData, setResponseData] = useState(
-    formatResponse(``)
-  );
+  const [responseData, setResponseData] = useState(formatResponse(``));
 
   //   const codePollName = `
   // await qortalRequest({
@@ -89,18 +88,22 @@ export const PUBLISH_MULTIPLE_QDN_RESOURCES = () => {
   // `.trim();
 
   const codePollName = useMemo(() => {
-    const handlePublicKeys  = !isEncrypted ? '' :  `publicKeys: ${JSON.stringify(requestData.publicKeys)},`
+    const handlePublicKeys = !isEncrypted
+      ? ""
+      : `publicKeys: ${JSON.stringify(requestData.publicKeys)},`;
 
     return `await qortalRequest({
     action: "PUBLISH_MULTIPLE_QDN_RESOURCES",
-    resources: ${JSON.stringify(resources?.map((item)=> {
-      const hasFile = !!item.file
-      if(!hasFile) return item
-      return {
-        ...item,
-        file: 'FILE OBJECT'
-      }
-    }))},
+    resources: ${JSON.stringify(
+      resources?.map((item) => {
+        const hasFile = !!item.file;
+        if (!hasFile) return item;
+        return {
+          ...item,
+          file: "FILE OBJECT",
+        };
+      })
+    )},
     encrypt: ${isEncrypted},
     ${handlePublicKeys}
   });
@@ -112,10 +115,10 @@ export const PUBLISH_MULTIPLE_QDN_RESOURCES = () => {
     const handleAppFeeRecipient = requestData?.appFeeRecipient
       ? `appFeeRecipient?: string;`
       : "";
-    
-      const handlePublicKeys  = !isEncrypted ? '' :  `publicKeys: string[];`
 
-      return `
+    const handlePublicKeys = !isEncrypted ? "" : `publicKeys: string[];`;
+
+    return `
       interface PublishMultipleQdnResourcesRequest {
         action: string;
         resources: any[];
@@ -124,8 +127,7 @@ export const PUBLISH_MULTIPLE_QDN_RESOURCES = () => {
         ${handleAppFeeRecipient}
         ${handlePublicKeys}
       }
-      `
-    
+      `;
   }, [requestData, file, isEncrypted, dataType]);
 
   const addtoResources = async () => {
@@ -147,6 +149,7 @@ export const PUBLISH_MULTIPLE_QDN_RESOURCES = () => {
         tags: requestData?.tags,
         disableEncrypt: requestData?.disableEncrypt,
         filename: requestData?.filename || "",
+        isMultiFileZip: requestData?.isMultiFileZip,
         ...dynamicFields,
       };
 
@@ -159,7 +162,8 @@ export const PUBLISH_MULTIPLE_QDN_RESOURCES = () => {
         category: "",
         title: "",
         description: "",
-        tags: []
+        tags: [],
+        isMultiFileZip: false
       });
       setFile(null);
     } catch (error) {
@@ -191,7 +195,7 @@ export const PUBLISH_MULTIPLE_QDN_RESOURCES = () => {
 
       setResponseData(formatResponse(JSON.stringify(account)));
     } catch (error) {
-      console.log('error', error)
+      console.log("error", error);
       setResponseData(formatResponse(JSON.stringify(error)));
       console.error(error);
     } finally {
@@ -203,6 +207,15 @@ export const PUBLISH_MULTIPLE_QDN_RESOURCES = () => {
       return {
         ...prev,
         [e.target.name]: e.target.value,
+      };
+    });
+  };
+
+  const handleChangeCheckbox = (e, val) => {
+    setRequestData((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: val,
       };
     });
   };
@@ -680,56 +693,58 @@ export const PUBLISH_MULTIPLE_QDN_RESOURCES = () => {
                 )}
                 {isEncrypted && (
                   <>
-                                  <Spacer height="10px" />
-                <Box
-                  sx={{
-                    padding: "10px",
-                    outline: "1px solid var(--color3)",
-                    borderRadius: "5px",
-                  }}
-                >
-                  <Typography variant="h6">disableEncrypt</Typography>
-                  <Spacer height="10px" />
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Checkbox
-                      onChange={(e) => {
-                        setRequestData((prev)=> {
-                          return {
-                            ...prev,
-                            disableEncrypt: e.target.checked
-                          }
-                        })
-                      }}
-                      checked={requestData?.disableEncrypt}
-                      edge="start"
-                      tabIndex={-1}
-                      disableRipple
-                    />
-                    <Typography
+                    <Spacer height="10px" />
+                    <Box
                       sx={{
-                        fontSize: "14px",
+                        padding: "10px",
+                        outline: "1px solid var(--color3)",
+                        borderRadius: "5px",
                       }}
                     >
-                      disableEncrypt
-                    </Typography>
-                  </Box>
-                  <Spacer height="10px" />
-                  <FieldExplanation>
-                    <Typography>Optional field</Typography>
-                  </FieldExplanation>
-                  <Spacer height="5px" />
-                  <Typography>
-                    You've marked this qortalRequest to use encrypt=true. By default all the resources in the resources list will be encrypted. Check this field if you want this resource to skip the default encryption.
-                  </Typography>
-                </Box>
+                      <Typography variant="h6">disableEncrypt</Typography>
+                      <Spacer height="10px" />
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Checkbox
+                          onChange={(e) => {
+                            setRequestData((prev) => {
+                              return {
+                                ...prev,
+                                disableEncrypt: e.target.checked,
+                              };
+                            });
+                          }}
+                          checked={requestData?.disableEncrypt}
+                          edge="start"
+                          tabIndex={-1}
+                          disableRipple
+                        />
+                        <Typography
+                          sx={{
+                            fontSize: "14px",
+                          }}
+                        >
+                          disableEncrypt
+                        </Typography>
+                      </Box>
+                      <Spacer height="10px" />
+                      <FieldExplanation>
+                        <Typography>Optional field</Typography>
+                      </FieldExplanation>
+                      <Spacer height="5px" />
+                      <Typography>
+                        You've marked this qortalRequest to use encrypt=true. By
+                        default all the resources in the resources list will be
+                        encrypted. Check this field if you want this resource to
+                        skip the default encryption.
+                      </Typography>
+                    </Box>
                   </>
                 )}
-
 
                 <Spacer height="10px" />
                 <Box
@@ -883,6 +898,48 @@ export const PUBLISH_MULTIPLE_QDN_RESOURCES = () => {
                   </FieldExplanation>
                   <Spacer height="5px" />
                   <Typography>Optionally put up to 5 tags.</Typography>
+                </Box>
+
+                <Box
+                  sx={{
+                    padding: "10px",
+                    outline: "1px solid var(--color3)",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <Typography variant="h6">isMultiFileZip</Typography>
+                  <Spacer height="10px" />
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Checkbox
+                      onChange={handleChangeCheckbox}
+                      checked={requestData.isMultiFileZip}
+                      edge="start"
+                      tabIndex={-1}
+                      disableRipple
+                      name="isMultiFileZip"
+                    />
+                    <Typography
+                      sx={{
+                        fontSize: "14px",
+                      }}
+                    >
+                      isMultiFileZip
+                    </Typography>
+                  </Box>
+                  <Spacer height="10px" />
+                  <FieldExplanation>
+                    <Typography>Optional field</Typography>
+                  </FieldExplanation>
+                  <Spacer height="5px" />
+                  <Typography>
+                    This shouldn't be put to true if the resource is to be
+                    encrypted. Also use File instead of base64.
+                  </Typography>
                 </Box>
               </div>
             </Card>
