@@ -142,32 +142,6 @@ interface InviteToGroupRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">inviteTime</Typography>
-            <CustomInput
-              type="text"
-              placeholder="inviteTime"
-              value={requestData.inviteTime}
-              name="inviteTime"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>
-              Enter in SECONDS the expiry duration of the invite.
-            </Typography>
-          </Box>
-
-          <Spacer height="20px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
             <Typography variant="h6">inviteeAddress</Typography>
             <CustomInput
               type="text"
@@ -183,6 +157,32 @@ interface InviteToGroupRequest {
             <Spacer height="5px" />
             <Typography>
               Enter the Qortal address of the user being invited.
+            </Typography>
+          </Box>
+
+          <Spacer height="20px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">inviteTime</Typography>
+            <CustomInput
+              type="text"
+              placeholder="inviteTime"
+              value={requestData.inviteTime}
+              name="inviteTime"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>
+              Enter in SECONDS the expiry duration of the invite.
             </Typography>
           </Box>
 

@@ -160,95 +160,6 @@ export const LIST_QDN_RESOURCES: React.FC = () => {
             borderRadius: "5px",
           }}
         >
-          <Typography variant="h6">service</Typography>
-          <Spacer height="10px" />
-          <Select
-            size="small"
-            labelId="label-select-category"
-            id="id-select-category"
-            value={requestData?.service}
-            displayEmpty
-            onChange={(e: SelectChangeEvent<string>) =>
-              setRequestData((prev) => {
-                return {
-                  ...prev,
-                  service: e.target.value,
-                };
-              })
-            }
-            sx={{
-              width: "300px",
-            }}
-          >
-            <MenuItem value={""}>
-              <em>No service selected</em>
-            </MenuItem>
-            {services?.map((service) => {
-              return (
-                <MenuItem key={service.name} value={service.name}>
-                  {`${service.name} - max ${service.sizeLabel}`}
-                </MenuItem>
-              );
-            })}
-          </Select>
-          <Spacer height="10px" />
-          <FieldExplanation>
-            <Typography>Optional field</Typography>
-          </FieldExplanation>
-        </Box>
-        <Spacer height="10px" />
-
-        <Box
-          sx={{
-            padding: "10px",
-            border: "1px solid var(--color3)",
-            borderRadius: "5px",
-          }}
-        >
-          <Typography variant="h6">name</Typography>
-          <CustomInput
-            type="text"
-            placeholder="name"
-            name="name"
-            value={requestData.name}
-            onChange={handleChange}
-          />
-          <Spacer height="10px" />
-          <FieldExplanation>
-            <Typography>Optional field</Typography>
-          </FieldExplanation>
-        </Box>
-        <Spacer height="10px" />
-
-        <Box
-          sx={{
-            padding: "10px",
-            border: "1px solid var(--color3)",
-            borderRadius: "5px",
-          }}
-        >
-          <Typography variant="h6">identifier</Typography>
-          <CustomInput
-            type="text"
-            placeholder="identifier"
-            name="identifier"
-            value={requestData.identifier}
-            onChange={handleChange}
-          />
-          <Spacer height="10px" />
-          <FieldExplanation>
-            <Typography>Optional field</Typography>
-          </FieldExplanation>
-        </Box>
-        <Spacer height="10px" />
-
-        <Box
-          sx={{
-            padding: "10px",
-            border: "1px solid var(--color3)",
-            borderRadius: "5px",
-          }}
-        >
           <Typography variant="h6">default</Typography>
           <Select
             size="small"
@@ -267,96 +178,6 @@ export const LIST_QDN_RESOURCES: React.FC = () => {
           <Spacer height="5px" />
           <Typography>Query the default resource of a service</Typography>
         </Box>
-        <Spacer height="10px" />
-
-        <Box
-          sx={{
-            padding: "10px",
-            border: "1px solid var(--color3)",
-            borderRadius: "5px",
-          }}
-        >
-          <Typography variant="h6">includeStatus</Typography>
-          <Select
-            size="small"
-            name="includeStatus"
-            value={String(requestData.includeStatus)}
-            onChange={handleChange}
-            sx={{ width: "300px" }}
-          >
-            <MenuItem value="true">true</MenuItem>
-            <MenuItem value="false">false</MenuItem>
-          </Select>
-          <Spacer height="10px" />
-          <FieldExplanation>
-            <Typography>Optional field</Typography>
-          </FieldExplanation>
-          <Spacer height="5px" />
-          <Typography>
-            Putting this field as true will return the status of a resource such
-            as DOWNLOADED, ect...
-          </Typography>
-        </Box>
-        <Spacer height="10px" />
-
-        <Box
-          sx={{
-            padding: "10px",
-            border: "1px solid var(--color3)",
-            borderRadius: "5px",
-          }}
-        >
-          <Typography variant="h6">includeMetadata</Typography>
-          <Select
-            size="small"
-            name="includeMetadata"
-            value={String(requestData.includeMetadata)}
-            onChange={handleChange}
-            sx={{ width: "300px" }}
-          >
-            <MenuItem value="true">true</MenuItem>
-            <MenuItem value="false">false</MenuItem>
-          </Select>
-          <Spacer height="10px" />
-          <FieldExplanation>
-            <Typography>Optional field</Typography>
-          </FieldExplanation>
-          <Spacer height="5px" />
-          <Typography>
-            Putting this field as true will return metadata
-          </Typography>
-        </Box>
-        <Spacer height="10px" />
-
-        <Box
-          sx={{
-            padding: "10px",
-            border: "1px solid var(--color3)",
-            borderRadius: "5px",
-          }}
-        >
-          <Typography variant="h6">followedOnly</Typography>
-          <Select
-            size="small"
-            name="followedOnly"
-            value={String(requestData.followedOnly)}
-            onChange={handleChange}
-            sx={{ width: "300px" }}
-          >
-            <MenuItem value="true">true</MenuItem>
-            <MenuItem value="false">false</MenuItem>
-          </Select>
-          <Spacer height="10px" />
-          <FieldExplanation>
-            <Typography>Optional field</Typography>
-          </FieldExplanation>
-          <Spacer height="5px" />
-          <Typography>
-            Putting this field as true will return resources from names you
-            follow.
-          </Typography>
-        </Box>
-
         <Spacer height="10px" />
 
         <Box
@@ -398,6 +219,117 @@ export const LIST_QDN_RESOURCES: React.FC = () => {
             borderRadius: "5px",
           }}
         >
+          <Typography variant="h6">followedOnly</Typography>
+          <Select
+            size="small"
+            name="followedOnly"
+            value={String(requestData.followedOnly)}
+            onChange={handleChange}
+            sx={{ width: "300px" }}
+          >
+            <MenuItem value="true">true</MenuItem>
+            <MenuItem value="false">false</MenuItem>
+          </Select>
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Optional field</Typography>
+          </FieldExplanation>
+          <Spacer height="5px" />
+          <Typography>
+            Putting this field as true will return resources from names you
+            follow.
+          </Typography>
+        </Box>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
+          <Typography variant="h6">identifier</Typography>
+          <CustomInput
+            type="text"
+            placeholder="identifier"
+            name="identifier"
+            value={requestData.identifier}
+            onChange={handleChange}
+          />
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Optional field</Typography>
+          </FieldExplanation>
+        </Box>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
+          <Typography variant="h6">includeMetadata</Typography>
+          <Select
+            size="small"
+            name="includeMetadata"
+            value={String(requestData.includeMetadata)}
+            onChange={handleChange}
+            sx={{ width: "300px" }}
+          >
+            <MenuItem value="true">true</MenuItem>
+            <MenuItem value="false">false</MenuItem>
+          </Select>
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Optional field</Typography>
+          </FieldExplanation>
+          <Spacer height="5px" />
+          <Typography>
+            Putting this field as true will return metadata
+          </Typography>
+        </Box>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
+          <Typography variant="h6">includeStatus</Typography>
+          <Select
+            size="small"
+            name="includeStatus"
+            value={String(requestData.includeStatus)}
+            onChange={handleChange}
+            sx={{ width: "300px" }}
+          >
+            <MenuItem value="true">true</MenuItem>
+            <MenuItem value="false">false</MenuItem>
+          </Select>
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Optional field</Typography>
+          </FieldExplanation>
+          <Spacer height="5px" />
+          <Typography>
+            Putting this field as true will return the status of a resource such
+            as DOWNLOADED, ect...
+          </Typography>
+        </Box>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
           <Typography variant="h6">limit</Typography>
           <CustomInput
             type="number"
@@ -406,6 +338,28 @@ export const LIST_QDN_RESOURCES: React.FC = () => {
             value={requestData.limit}
             onChange={handleChange}
           />
+        </Box>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
+          <Typography variant="h6">name</Typography>
+          <CustomInput
+            type="text"
+            placeholder="name"
+            name="name"
+            value={requestData.name}
+            onChange={handleChange}
+          />
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Optional field</Typography>
+          </FieldExplanation>
         </Box>
         <Spacer height="10px" />
 
@@ -445,6 +399,51 @@ export const LIST_QDN_RESOURCES: React.FC = () => {
             <MenuItem value="true">true</MenuItem>
             <MenuItem value="false">false</MenuItem>
           </Select>
+        </Box>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
+          <Typography variant="h6">service</Typography>
+          <Spacer height="10px" />
+          <Select
+            size="small"
+            labelId="label-select-category"
+            id="id-select-category"
+            value={requestData?.service}
+            displayEmpty
+            onChange={(e: SelectChangeEvent<string>) =>
+              setRequestData((prev) => {
+                return {
+                  ...prev,
+                  service: e.target.value,
+                };
+              })
+            }
+            sx={{
+              width: "300px",
+            }}
+          >
+            <MenuItem value={""}>
+              <em>No service selected</em>
+            </MenuItem>
+            {services?.map((service) => {
+              return (
+                <MenuItem key={service.name} value={service.name}>
+                  {`${service.name} - max ${service.sizeLabel}`}
+                </MenuItem>
+              );
+            })}
+          </Select>
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Optional field</Typography>
+          </FieldExplanation>
         </Box>
         <Spacer height="10px" />
 

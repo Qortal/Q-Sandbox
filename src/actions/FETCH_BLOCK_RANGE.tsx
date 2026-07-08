@@ -132,6 +132,28 @@ interface GetAccountNamesRequest {
               borderRadius: "5px",
             }}
           >
+            <Typography variant="h6">count</Typography>
+            <CustomInput
+              type="number"
+              placeholder="count"
+              value={requestData.count}
+              name="count"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+          </Box>
+          <Spacer height="20px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
             <Typography variant="h6">height</Typography>
             <CustomInput
               type="number"
@@ -146,28 +168,6 @@ interface GetAccountNamesRequest {
             </FieldExplanation>
             <Spacer height="5px" />
             <Typography>Enter a block height</Typography>
-            <Spacer height="5px" />
-          </Box>
-          <Spacer height="20px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">count</Typography>
-            <CustomInput
-              type="number"
-              placeholder="count"
-              value={requestData.count}
-              name="count"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
             <Spacer height="5px" />
           </Box>
 

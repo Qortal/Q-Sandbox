@@ -139,30 +139,6 @@ interface SearchNamesRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">query</Typography>
-            <CustomInput
-              type="text"
-              placeholder="query"
-              value={requestData.query}
-              name="query"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Optional field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter a query</Typography>
-            <Spacer height="5px" />
-          </Box>
-          <Spacer height="20px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
             <Typography variant="h6">limit</Typography>
             <CustomInput
               type="number"
@@ -208,47 +184,6 @@ interface SearchNamesRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">reverse</Typography>
-            <Spacer height="10px" />
-            <Select
-              size="small"
-              labelId="label-select-category"
-              id="id-select-category"
-              value={String(requestData?.reverse)}
-              displayEmpty
-              onChange={(e: SelectChangeEvent<string>) =>
-                setRequestData((prev) => {
-                  return {
-                    ...prev,
-                    reverse: e.target.value === "true",
-                  };
-                })
-              }
-              sx={{
-                width: "300px",
-              }}
-            >
-              <MenuItem value="false">false</MenuItem>
-
-              <MenuItem value="true">true</MenuItem>
-            </Select>
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Optional field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>
-              Reverse true will list the results by latest of creation.
-            </Typography>
-          </Box>
-          <Spacer height="20px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
             <Typography variant="h6">prefix</Typography>
             <Spacer height="10px" />
             <Select
@@ -280,6 +215,71 @@ interface SearchNamesRequest {
             <Spacer height="5px" />
             <Typography>
               If true, only the beginning of the name is matched
+            </Typography>
+          </Box>
+          <Spacer height="20px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">query</Typography>
+            <CustomInput
+              type="text"
+              placeholder="query"
+              value={requestData.query}
+              name="query"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Optional field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Enter a query</Typography>
+            <Spacer height="5px" />
+          </Box>
+          <Spacer height="20px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">reverse</Typography>
+            <Spacer height="10px" />
+            <Select
+              size="small"
+              labelId="label-select-category"
+              id="id-select-category"
+              value={String(requestData?.reverse)}
+              displayEmpty
+              onChange={(e: SelectChangeEvent<string>) =>
+                setRequestData((prev) => {
+                  return {
+                    ...prev,
+                    reverse: e.target.value === "true",
+                  };
+                })
+              }
+              sx={{
+                width: "300px",
+              }}
+            >
+              <MenuItem value="false">false</MenuItem>
+
+              <MenuItem value="true">true</MenuItem>
+            </Select>
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Optional field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>
+              Reverse true will list the results by latest of creation.
             </Typography>
           </Box>
           <Spacer height="20px" />

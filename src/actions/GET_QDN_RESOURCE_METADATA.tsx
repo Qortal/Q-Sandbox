@@ -113,6 +113,28 @@ export const GET_QDN_RESOURCE_METADATA: React.FC = () => {
             borderRadius: "5px",
           }}
         >
+          <Typography variant="h6">name</Typography>
+          <CustomInput
+            type="text"
+            placeholder="name"
+            name="name"
+            value={requestData.name}
+            onChange={handleChange}
+          />
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Required field</Typography>
+          </FieldExplanation>
+        </Box>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
           <Typography variant="h6">service</Typography>
           <Spacer height="10px" />
           <Select
@@ -144,28 +166,6 @@ export const GET_QDN_RESOURCE_METADATA: React.FC = () => {
               );
             })}
           </Select>
-          <Spacer height="10px" />
-          <FieldExplanation>
-            <Typography>Required field</Typography>
-          </FieldExplanation>
-        </Box>
-        <Spacer height="10px" />
-
-        <Box
-          sx={{
-            padding: "10px",
-            border: "1px solid var(--color3)",
-            borderRadius: "5px",
-          }}
-        >
-          <Typography variant="h6">name</Typography>
-          <CustomInput
-            type="text"
-            placeholder="name"
-            name="name"
-            value={requestData.name}
-            onChange={handleChange}
-          />
           <Spacer height="10px" />
           <FieldExplanation>
             <Typography>Required field</Typography>

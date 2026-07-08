@@ -168,113 +168,6 @@ interface DeployAtRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">name</Typography>
-            <CustomInput
-              type="text"
-              placeholder="name"
-              value={requestData.name}
-              name="name"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-
-            <Spacer height="5px" />
-            <Typography>Give a name to the AT</Typography>
-            <Spacer height="5px" />
-            <Typography>Max characters: 200</Typography>
-          </Box>
-          <Spacer height="5px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">description</Typography>
-            <CustomInput
-              type="text"
-              placeholder="description"
-              value={requestData.description}
-              name="description"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>
-              Give users information about the AT by adding a description
-            </Typography>
-            <Spacer height="5px" />
-            <Typography>Max characters: 2000</Typography>
-          </Box>
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">tags</Typography>
-            <Spacer height="10px" />
-            <OptionsManager
-              items={requestData.tags?.split(", ")}
-              setItems={(items: string[]) => {
-                setRequestData((prev) => {
-                  return {
-                    ...prev,
-                    tags: items?.join(", "),
-                  };
-                });
-              }}
-            />
-
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Max characters: 200</Typography>
-            <Spacer height="5px" />
-            <Typography>Enter a string of tags.</Typography>
-          </Box>
-          <Spacer height="5px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">creationBytes</Typography>
-
-            <CustomInput
-              type="text"
-              placeholder="creationBytes"
-              value={requestData.creationBytes}
-              name="creationBytes"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter creation bytes of the AT.</Typography>
-          </Box>
-          <Spacer height="5px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
             <Typography variant="h6">amount</Typography>
 
             <CustomInput
@@ -321,6 +214,114 @@ interface DeployAtRequest {
               Enter the asset used for the AT. At the moment QORT is used (
               represented by the value 0).
             </Typography>
+          </Box>
+          <Spacer height="5px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">creationBytes</Typography>
+
+            <CustomInput
+              type="text"
+              placeholder="creationBytes"
+              value={requestData.creationBytes}
+              name="creationBytes"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Enter creation bytes of the AT.</Typography>
+          </Box>
+          <Spacer height="5px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">description</Typography>
+            <CustomInput
+              type="text"
+              placeholder="description"
+              value={requestData.description}
+              name="description"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>
+              Give users information about the AT by adding a description
+            </Typography>
+            <Spacer height="5px" />
+            <Typography>Max characters: 2000</Typography>
+          </Box>
+          <Spacer height="5px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">name</Typography>
+            <CustomInput
+              type="text"
+              placeholder="name"
+              value={requestData.name}
+              name="name"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+
+            <Spacer height="5px" />
+            <Typography>Give a name to the AT</Typography>
+            <Spacer height="5px" />
+            <Typography>Max characters: 200</Typography>
+          </Box>
+          <Spacer height="5px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">tags</Typography>
+            <Spacer height="10px" />
+            <OptionsManager
+              items={requestData.tags?.split(", ")}
+              setItems={(items: string[]) => {
+                setRequestData((prev) => {
+                  return {
+                    ...prev,
+                    tags: items?.join(", "),
+                  };
+                });
+              }}
+            />
+
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Max characters: 200</Typography>
+            <Spacer height="5px" />
+            <Typography>Enter a string of tags.</Typography>
           </Box>
           <Spacer height="5px" />
           <Box

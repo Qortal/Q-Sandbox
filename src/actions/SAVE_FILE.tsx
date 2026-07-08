@@ -169,31 +169,6 @@ interface SaveFileRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">location.name</Typography>
-            <CustomInput
-              type="text"
-              placeholder="location.name"
-              value={requestData.location?.name || ""}
-              name="location.name"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>
-              Enter the registered name for the QDN resource location.
-            </Typography>
-          </Box>
-          <Spacer height="5px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
             <Typography variant="h6">location.identifier</Typography>
             <CustomInput
               type="text"
@@ -209,6 +184,31 @@ interface SaveFileRequest {
             <Spacer height="5px" />
             <Typography>
               Enter the identifier for the QDN resource location.
+            </Typography>
+          </Box>
+          <Spacer height="5px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">location.name</Typography>
+            <CustomInput
+              type="text"
+              placeholder="location.name"
+              value={requestData.location?.name || ""}
+              name="location.name"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>
+              Enter the registered name for the QDN resource location.
             </Typography>
           </Box>
           <Spacer height="5px" />

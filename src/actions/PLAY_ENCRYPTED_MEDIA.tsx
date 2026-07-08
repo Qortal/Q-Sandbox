@@ -137,12 +137,12 @@ interface PlayEncryptedMediaRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">mediaId</Typography>
+            <Typography variant="h6">iv</Typography>
             <CustomInput
               type="text"
-              placeholder="mediaId"
-              value={requestData.mediaId}
-              name="mediaId"
+              placeholder="iv"
+              value={requestData.iv}
+              name="iv"
               onChange={handleChange}
             />
             <Spacer height="10px" />
@@ -151,7 +151,7 @@ interface PlayEncryptedMediaRequest {
             </FieldExplanation>
             <Spacer height="5px" />
             <Typography>
-              Enter the QDN resource identifier for the encrypted media.
+              Enter the initialization vector (IV) used for encryption.
             </Typography>
             <Spacer height="20px" />
             <Typography variant="h6">key</Typography>
@@ -171,12 +171,12 @@ interface PlayEncryptedMediaRequest {
               Enter the decryption key for the encrypted media.
             </Typography>
             <Spacer height="20px" />
-            <Typography variant="h6">iv</Typography>
+            <Typography variant="h6">mediaId</Typography>
             <CustomInput
               type="text"
-              placeholder="iv"
-              value={requestData.iv}
-              name="iv"
+              placeholder="mediaId"
+              value={requestData.mediaId}
+              name="mediaId"
               onChange={handleChange}
             />
             <Spacer height="10px" />
@@ -185,7 +185,7 @@ interface PlayEncryptedMediaRequest {
             </FieldExplanation>
             <Spacer height="5px" />
             <Typography>
-              Enter the initialization vector (IV) used for encryption.
+              Enter the QDN resource identifier for the encrypted media.
             </Typography>
             <Spacer height="20px" />
             <Typography variant="h6">service</Typography>

@@ -147,119 +147,6 @@ interface UpdateGroupRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">newOwner</Typography>
-            <CustomInput
-              type="text"
-              placeholder="newOwner"
-              value={requestData.newOwner}
-              name="newOwner"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>
-              Enter the Qortal address of the new owner of the group.
-            </Typography>
-          </Box>
-          <Spacer height="5px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">groupId</Typography>
-            <CustomInput
-              type="text"
-              placeholder="groupId"
-              value={requestData.groupId}
-              name="groupId"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>
-              Enter the Qortal group Id of the group you wish to update.
-            </Typography>
-          </Box>
-          <Spacer height="5px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">description</Typography>
-            <CustomInput
-              type="text"
-              placeholder="description"
-              value={requestData.description}
-              name="description"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Optional field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter a description for the group.</Typography>
-          </Box>
-          <Spacer height="5px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">type</Typography>
-            <Spacer height="10px" />
-            <Select
-              size="small"
-              labelId="label-select-category"
-              id="id-select-category"
-              value={requestData?.type}
-              displayEmpty
-              onChange={(e: SelectChangeEvent<number>) =>
-                setRequestData((prev) => {
-                  return {
-                    ...prev,
-                    type: +e.target.value,
-                  };
-                })
-              }
-              sx={{
-                width: "300px",
-              }}
-            >
-              <MenuItem value={1}>Open (public)</MenuItem>
-              <MenuItem value={0}>
-                Closed (private) - users need permission to join
-              </MenuItem>
-            </Select>
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter the group type.</Typography>
-          </Box>
-          <Spacer height="5px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
             <Typography variant="h6">approvalThreshold</Typography>
             <Spacer height="10px" />
             <Select
@@ -298,6 +185,80 @@ interface UpdateGroupRequest {
               {" "}
               Group Approval Threshold (number / percentage of Admins that must
               approve a transaction)
+            </Typography>
+          </Box>
+          <Spacer height="5px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">groupId</Typography>
+            <CustomInput
+              type="text"
+              placeholder="groupId"
+              value={requestData.groupId}
+              name="groupId"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>
+              Enter the Qortal group Id of the group you wish to update.
+            </Typography>
+          </Box>
+          <Spacer height="5px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">maxBlock</Typography>
+            <Spacer height="10px" />
+            <Select
+              size="small"
+              labelId="label-select-category"
+              id="id-select-category"
+              value={requestData?.maxBlock}
+              displayEmpty
+              onChange={(e: SelectChangeEvent<number>) =>
+                setRequestData((prev) => {
+                  return {
+                    ...prev,
+                    maxBlock: +e.target.value,
+                  };
+                })
+              }
+              sx={{
+                width: "300px",
+              }}
+            >
+              <MenuItem value={60}>1 hour</MenuItem>
+              <MenuItem value={180}>3 hours</MenuItem>
+              <MenuItem value={300}>5 hours</MenuItem>
+              <MenuItem value={420}>7 hours</MenuItem>
+              <MenuItem value={720}>12 hours</MenuItem>
+              <MenuItem value={1440}>1 day</MenuItem>
+              <MenuItem value={4320}>3 days</MenuItem>
+              <MenuItem value={7200}>5 days</MenuItem>
+              <MenuItem value={10080}>7 days</MenuItem>
+              <MenuItem value={14400}>10 days</MenuItem>
+              <MenuItem value={21600}>15 days</MenuItem>
+            </Select>
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>
+              Maximum Block delay for Group Transaction Approvals
             </Typography>
           </Box>
           <Spacer height="5px" />
@@ -358,19 +319,44 @@ interface UpdateGroupRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">maxBlock</Typography>
+            <Typography variant="h6">newOwner</Typography>
+            <CustomInput
+              type="text"
+              placeholder="newOwner"
+              value={requestData.newOwner}
+              name="newOwner"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>
+              Enter the Qortal address of the new owner of the group.
+            </Typography>
+          </Box>
+          <Spacer height="5px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">type</Typography>
             <Spacer height="10px" />
             <Select
               size="small"
               labelId="label-select-category"
               id="id-select-category"
-              value={requestData?.maxBlock}
+              value={requestData?.type}
               displayEmpty
               onChange={(e: SelectChangeEvent<number>) =>
                 setRequestData((prev) => {
                   return {
                     ...prev,
-                    maxBlock: +e.target.value,
+                    type: +e.target.value,
                   };
                 })
               }
@@ -378,26 +364,40 @@ interface UpdateGroupRequest {
                 width: "300px",
               }}
             >
-              <MenuItem value={60}>1 hour</MenuItem>
-              <MenuItem value={180}>3 hours</MenuItem>
-              <MenuItem value={300}>5 hours</MenuItem>
-              <MenuItem value={420}>7 hours</MenuItem>
-              <MenuItem value={720}>12 hours</MenuItem>
-              <MenuItem value={1440}>1 day</MenuItem>
-              <MenuItem value={4320}>3 days</MenuItem>
-              <MenuItem value={7200}>5 days</MenuItem>
-              <MenuItem value={10080}>7 days</MenuItem>
-              <MenuItem value={14400}>10 days</MenuItem>
-              <MenuItem value={21600}>15 days</MenuItem>
+              <MenuItem value={1}>Open (public)</MenuItem>
+              <MenuItem value={0}>
+                Closed (private) - users need permission to join
+              </MenuItem>
             </Select>
             <Spacer height="10px" />
             <FieldExplanation>
               <Typography>Required field</Typography>
             </FieldExplanation>
             <Spacer height="5px" />
-            <Typography>
-              Maximum Block delay for Group Transaction Approvals
-            </Typography>
+            <Typography>Enter the group type.</Typography>
+          </Box>
+          <Spacer height="5px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">description</Typography>
+            <CustomInput
+              type="text"
+              placeholder="description"
+              value={requestData.description}
+              name="description"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Optional field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Enter a description for the group.</Typography>
           </Box>
           <Spacer height="5px" />
 

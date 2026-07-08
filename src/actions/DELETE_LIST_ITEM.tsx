@@ -143,28 +143,6 @@ interface DeleteListItemRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">list_name</Typography>
-            <CustomInput
-              type="text"
-              placeholder="list_name"
-              value={requestData.list_name}
-              name="list_name"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter the name of the list</Typography>
-          </Box>
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
             <Typography variant="h6">items</Typography>
             <Spacer height="10px" />
             <OptionsManager
@@ -190,6 +168,28 @@ interface DeleteListItemRequest {
               replace the entire list. It will remove the items specified in the
               array of items.
             </Typography>
+          </Box>
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">list_name</Typography>
+            <CustomInput
+              type="text"
+              placeholder="list_name"
+              value={requestData.list_name}
+              name="list_name"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Enter the name of the list</Typography>
           </Box>
           <Spacer height="20px" />
           <Button

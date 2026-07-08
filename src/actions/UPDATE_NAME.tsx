@@ -117,6 +117,30 @@ interface UpdateNameRequest {
               borderRadius: "5px",
             }}
           >
+            <Typography variant="h6">oldName</Typography>
+            <CustomInput
+              type="text"
+              placeholder="oldName"
+              value={requestData.oldName}
+              name="oldName"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Enter the old name</Typography>
+            <Spacer height="5px" />
+          </Box>
+          <Spacer height="20px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
             <Typography variant="h6">newName</Typography>
             <CustomInput
               type="text"
@@ -134,30 +158,6 @@ interface UpdateNameRequest {
             <Spacer height="5px" />
             <Typography>Max characters: 40</Typography>
             <Typography>min characters: 3</Typography>
-            <Spacer height="5px" />
-          </Box>
-          <Spacer height="20px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">oldName</Typography>
-            <CustomInput
-              type="text"
-              placeholder="oldName"
-              value={requestData.oldName}
-              name="oldName"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter the old name</Typography>
             <Spacer height="5px" />
           </Box>
           <Spacer height="20px" />

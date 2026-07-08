@@ -151,6 +151,31 @@ interface CreateTradeSellOrderRequest {
               borderRadius: "5px",
             }}
           >
+            <Typography variant="h6">foreignAmount</Typography>
+            <CustomInput
+              type="text"
+              placeholder="foreignAmount"
+              value={requestData.foreignAmount}
+              name="foreignAmount"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>
+              Enter the total amount of the foreign coin ( ie LTC ) that you
+              want for the qortAmount.
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
             <Typography variant="h6">foreignBlockchain</Typography>
             <Spacer height="10px" />
             <Select
@@ -213,31 +238,6 @@ interface CreateTradeSellOrderRequest {
               Enter the total amount of QORT you would like to sell.
             </Typography>
             <Spacer height="5px" />
-          </Box>
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">foreignAmount</Typography>
-            <CustomInput
-              type="text"
-              placeholder="foreignAmount"
-              value={requestData.foreignAmount}
-              name="foreignAmount"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>
-              Enter the total amount of the foreign coin ( ie LTC ) that you
-              want for the qortAmount.
-            </Typography>
           </Box>
           <Spacer height="20px" />
           <Button

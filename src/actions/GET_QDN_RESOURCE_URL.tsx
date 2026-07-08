@@ -140,6 +140,74 @@ export const GET_QDN_RESOURCE_URL: React.FC = () => {
               borderRadius: "5px",
             }}
           >
+            <Typography variant="h6">name</Typography>
+            <Spacer height="10px" />
+            <CustomInput
+              type="text"
+              placeholder="name"
+              value={requestData.name}
+              name="name"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field.</Typography>
+            </FieldExplanation>
+          </Box>
+          <Spacer height="10px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">identifier</Typography>
+            <Spacer height="10px" />
+            <CustomInput
+              type="text"
+              placeholder="identifier"
+              value={requestData.identifier}
+              name="identifier"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Optional field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Enter an identifier</Typography>
+          </Box>
+          <Spacer height="10px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">path</Typography>
+            <Spacer height="10px" />
+            <CustomInput
+              type="text"
+              placeholder="path"
+              value={requestData.path}
+              name="path"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Optional field.</Typography>
+            </FieldExplanation>
+          </Box>
+          <Spacer height="10px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
             <Typography variant="h6">service</Typography>
             <Spacer height="10px" />
             <Select
@@ -171,75 +239,6 @@ export const GET_QDN_RESOURCE_URL: React.FC = () => {
                 );
               })}
             </Select>
-          </Box>
-          <Spacer height="10px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">identifier</Typography>
-            <Spacer height="10px" />
-            <CustomInput
-              type="text"
-              placeholder="identifier"
-              value={requestData.identifier}
-              name="identifier"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Optional field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter an identifier</Typography>
-          </Box>
-
-          <Spacer height="10px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">name</Typography>
-            <Spacer height="10px" />
-            <CustomInput
-              type="text"
-              placeholder="name"
-              value={requestData.name}
-              name="name"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field.</Typography>
-            </FieldExplanation>
-          </Box>
-          <Spacer height="10px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">path</Typography>
-            <Spacer height="10px" />
-            <CustomInput
-              type="text"
-              placeholder="path"
-              value={requestData.path}
-              name="path"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Optional field.</Typography>
-            </FieldExplanation>
           </Box>
           <Spacer height="10px" />
           <Button

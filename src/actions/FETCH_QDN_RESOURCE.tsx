@@ -21,6 +21,7 @@ interface RequestData {
   service: string;
   name: string;
   identifier: string;
+  filepath: string;
   encoding: string;
   rebuild: boolean;
 }
@@ -37,6 +38,7 @@ export const FETCH_QDN_RESOURCE: React.FC = () => {
     service: "THUMBNAIL",
     name: "QortalDemo",
     identifier: "qortal_avatar",
+    filepath: "",
     encoding: "base64",
     rebuild: false,
   });
@@ -47,6 +49,7 @@ export const FETCH_QDN_RESOURCE: React.FC = () => {
   const codeBlock = useMemo(() => {
     const optionalFields = {
       identifier: requestData?.identifier,
+      filepath: requestData?.filepath,
       encoding: requestData?.encoding,
     };
 
@@ -72,6 +75,7 @@ export const FETCH_QDN_RESOURCE: React.FC = () => {
            service: string;
            name: string;
            identifier?: string;
+           filepath?: string;
            encoding?: string;
            rebuild?: boolean;
         }
@@ -86,6 +90,7 @@ export const FETCH_QDN_RESOURCE: React.FC = () => {
         service: requestData?.service,
         name: requestData?.name,
         identifier: requestData?.identifier || undefined,
+        filepath: requestData?.filepath || undefined,
         rebuild: requestData?.rebuild,
         encoding: requestData?.encoding,
       });
@@ -117,6 +122,63 @@ export const FETCH_QDN_RESOURCE: React.FC = () => {
 
       <Card>
         <Typography variant="h5">Fields</Typography>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
+          <Typography variant="h6">name</Typography>
+          <CustomInput
+            type="text"
+            placeholder="name"
+            name="name"
+            value={requestData.name}
+            onChange={handleChange}
+          />
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Required field</Typography>
+          </FieldExplanation>
+        </Box>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
+          <Typography variant="h6">rebuild</Typography>
+          <Select
+            size="small"
+            name="rebuild"
+            value={requestData.rebuild ? "true" : "false"}
+            onChange={(e: SelectChangeEvent<string>) =>
+              setRequestData((prev) => ({
+                ...prev,
+                rebuild: e.target.value === "true",
+              }))
+            }
+            sx={{ width: "300px" }}
+          >
+            <MenuItem value="true">true</MenuItem>
+            <MenuItem value="false">false</MenuItem>
+          </Select>
+
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Required field</Typography>
+          </FieldExplanation>
+          <Spacer height="5px" />
+          <Typography>
+            If true, the resource will be re-built if it was already built.
+          </Typography>
+        </Box>
         <Spacer height="10px" />
 
         <Box
@@ -171,17 +233,41 @@ export const FETCH_QDN_RESOURCE: React.FC = () => {
             borderRadius: "5px",
           }}
         >
-          <Typography variant="h6">name</Typography>
+          <Typography variant="h6">encoding</Typography>
           <CustomInput
             type="text"
-            placeholder="name"
-            name="name"
-            value={requestData.name}
+            placeholder="encoding"
+            name="encoding"
+            value={requestData.encoding}
             onChange={handleChange}
           />
           <Spacer height="10px" />
           <FieldExplanation>
-            <Typography>Required field</Typography>
+            <Typography>Optional field</Typography>
+            <Typography>If omitted, data is returned in raw form</Typography>
+          </FieldExplanation>
+        </Box>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
+          <Typography variant="h6">filepath</Typography>
+          <CustomInput
+            type="text"
+            placeholder="filepath"
+            name="filepath"
+            value={requestData.filepath}
+            onChange={handleChange}
+          />
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Optional field</Typography>
+            <Typography>Path to specific file within multi-file resource</Typography>
           </FieldExplanation>
         </Box>
         <Spacer height="10px" />
@@ -204,60 +290,6 @@ export const FETCH_QDN_RESOURCE: React.FC = () => {
           <Spacer height="10px" />
           <FieldExplanation>
             <Typography>Optional field</Typography>
-          </FieldExplanation>
-        </Box>
-
-        <Spacer height="10px" />
-
-        <Box
-          sx={{
-            padding: "10px",
-            border: "1px solid var(--color3)",
-            borderRadius: "5px",
-          }}
-        >
-          <Typography variant="h6">rebuild</Typography>
-          <Select
-            size="small"
-            name="rebuild"
-            value={requestData.rebuild}
-            onChange={handleChange}
-            sx={{ width: "300px" }}
-          >
-            <MenuItem value={true}>true</MenuItem>
-            <MenuItem value={false}>false</MenuItem>
-          </Select>
-
-          <Spacer height="10px" />
-          <FieldExplanation>
-            <Typography>Required field</Typography>
-          </FieldExplanation>
-          <Spacer height="5px" />
-          <Typography>
-            If true, the resource will be re-built if it was already built.
-          </Typography>
-        </Box>
-        <Spacer height="10px" />
-
-        <Box
-          sx={{
-            padding: "10px",
-            border: "1px solid var(--color3)",
-            borderRadius: "5px",
-          }}
-        >
-          <Typography variant="h6">encoding</Typography>
-          <CustomInput
-            type="text"
-            placeholder="encoding"
-            name="encoding"
-            value={requestData.encoding}
-            onChange={handleChange}
-          />
-          <Spacer height="10px" />
-          <FieldExplanation>
-            <Typography>Optional field</Typography>
-            <Typography>If omitted, data is returned in raw form</Typography>
           </FieldExplanation>
         </Box>
         <Spacer height="10px" />

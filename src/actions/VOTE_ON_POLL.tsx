@@ -127,29 +127,6 @@ interface VoteOnPollRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">pollName</Typography>
-            <CustomInput
-              type="text"
-              placeholder="pollName"
-              value={requestData.pollName}
-              name="pollName"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter the existing name of the poll</Typography>
-          </Box>
-          <Spacer height="5px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
             <Typography variant="h6">optionIndex</Typography>
             <CustomInput
               type="number"
@@ -168,6 +145,29 @@ interface VoteOnPollRequest {
               Enter the index value of the option from the list of options in
               the created poll.
             </Typography>
+          </Box>
+          <Spacer height="5px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">pollName</Typography>
+            <CustomInput
+              type="text"
+              placeholder="pollName"
+              value={requestData.pollName}
+              name="pollName"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Enter the existing name of the poll</Typography>
           </Box>
           <Spacer height="20px" />
           <Button

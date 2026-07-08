@@ -137,6 +137,28 @@ export const LINK_TO_QDN_RESOURCE: React.FC = () => {
               borderRadius: "5px",
             }}
           >
+            <Typography variant="h6">name</Typography>
+            <Spacer height="10px" />
+            <CustomInput
+              type="text"
+              placeholder="name"
+              value={requestData.name}
+              name="name"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field.</Typography>
+            </FieldExplanation>
+          </Box>
+          <Spacer height="10px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
             <Typography variant="h6">service</Typography>
             <Spacer height="10px" />
             <Select
@@ -192,29 +214,6 @@ export const LINK_TO_QDN_RESOURCE: React.FC = () => {
             </FieldExplanation>
             <Spacer height="5px" />
             <Typography>Enter an identifier</Typography>
-          </Box>
-
-          <Spacer height="10px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">name</Typography>
-            <Spacer height="10px" />
-            <CustomInput
-              type="text"
-              placeholder="name"
-              value={requestData.name}
-              name="name"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field.</Typography>
-            </FieldExplanation>
           </Box>
           <Spacer height="10px" />
           <Box

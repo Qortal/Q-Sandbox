@@ -126,6 +126,35 @@ interface BanFromGroupRequest {
               borderRadius: "5px",
             }}
           >
+            <Typography variant="h6">banTime</Typography>
+            <CustomInput
+              type="number"
+              placeholder="banTime"
+              value={requestData.banTime}
+              name="banTime"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Enter the group identifier.</Typography>
+            <Typography>
+              Ban duration time is in Seconds. Putting 0 means that the ban is
+              forever.
+            </Typography>
+          </Box>
+
+          <Spacer height="20px" />
+
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
             <Typography variant="h6">groupId</Typography>
             <CustomInput
               type="text"
@@ -143,7 +172,6 @@ interface BanFromGroupRequest {
           </Box>
 
           <Spacer height="20px" />
-
           <Box
             sx={{
               padding: "10px",
@@ -166,34 +194,6 @@ interface BanFromGroupRequest {
             <Spacer height="5px" />
             <Typography>
               Enter the qortal Address of the user you are trying to ban.
-            </Typography>
-          </Box>
-
-          <Spacer height="20px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">banTime</Typography>
-            <CustomInput
-              type="number"
-              placeholder="banTime"
-              value={requestData.banTime}
-              name="banTime"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter the group identifier.</Typography>
-            <Typography>
-              Ban duration time is in Seconds. Putting 0 means that the ban is
-              forever.
             </Typography>
           </Box>
 

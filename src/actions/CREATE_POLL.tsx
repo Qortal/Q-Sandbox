@@ -183,24 +183,31 @@ interface CreatePollRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">pollDescription</Typography>
-            <CustomInput
-              type="text"
-              placeholder="pollDescription"
-              value={requestData.pollDescription}
-              name="pollDescription"
-              onChange={handleChange}
+            <Typography variant="h6">pollOptions</Typography>
+            <Spacer height="10px" />
+            <OptionsManager
+              items={requestData.pollOptions}
+              setItems={(items: string[]) => {
+                setRequestData((prev) => {
+                  return {
+                    ...prev,
+                    pollOptions: items,
+                  };
+                });
+              }}
             />
+
             <Spacer height="10px" />
             <FieldExplanation>
-              <Typography>Optional field</Typography>
+              <Typography>Required field</Typography>
             </FieldExplanation>
             <Spacer height="5px" />
             <Typography>
-              Give users information about the poll by adding a description
+              Enter a list of options. This field should be a list of strings
+              when using the qortalRequest.
             </Typography>
             <Spacer height="5px" />
-            <Typography>Max characters: 4000</Typography>
+            <Typography>Max number of options: 100</Typography>
           </Box>
           <Spacer height="5px" />
           <Box
@@ -235,31 +242,24 @@ interface CreatePollRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">pollOptions</Typography>
-            <Spacer height="10px" />
-            <OptionsManager
-              items={requestData.pollOptions}
-              setItems={(items: string[]) => {
-                setRequestData((prev) => {
-                  return {
-                    ...prev,
-                    pollOptions: items,
-                  };
-                });
-              }}
+            <Typography variant="h6">pollDescription</Typography>
+            <CustomInput
+              type="text"
+              placeholder="pollDescription"
+              value={requestData.pollDescription}
+              name="pollDescription"
+              onChange={handleChange}
             />
-
             <Spacer height="10px" />
             <FieldExplanation>
-              <Typography>Required field</Typography>
+              <Typography>Optional field</Typography>
             </FieldExplanation>
             <Spacer height="5px" />
             <Typography>
-              Enter a list of options. This field should be a list of strings
-              when using the qortalRequest.
+              Give users information about the poll by adding a description
             </Typography>
             <Spacer height="5px" />
-            <Typography>Max number of options: 100</Typography>
+            <Typography>Max characters: 4000</Typography>
           </Box>
           <Spacer height="20px" />
           <Button

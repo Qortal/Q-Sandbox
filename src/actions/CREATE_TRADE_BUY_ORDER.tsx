@@ -136,6 +136,44 @@ interface CreateTradeBuyOrderRequest {
               borderRadius: "5px",
             }}
           >
+            <Typography variant="h6">crosschainAtInfo</Typography>
+            <Spacer height="10px" />
+            <OptionsManager
+              items={requestData.crosschainAtInfo?.map(
+                (item) => item?.qortalAtAddress,
+              )}
+              setItems={(items: string[]) => {
+                setRequestData((prev) => {
+                  return {
+                    ...prev,
+                    crosschainAtInfo: items?.map((item) => {
+                      return {
+                        qortalAtAddress: item,
+                      };
+                    }),
+                  };
+                });
+              }}
+            />
+
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>
+              Enter a list of crosschain ATs. All the ATs need to be of the same
+              foreignBlockchain as the value selected in the field
+              "foreignBlockchain"
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
             <Typography variant="h6">foreignBlockchain</Typography>
             <Spacer height="10px" />
             <Select
@@ -173,44 +211,6 @@ interface CreateTradeBuyOrderRequest {
             </FieldExplanation>
             <Spacer height="5px" />
             <Typography>Select a supported foreign blockchain.</Typography>
-          </Box>
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">crosschainAtInfo</Typography>
-            <Spacer height="10px" />
-            <OptionsManager
-              items={requestData.crosschainAtInfo?.map(
-                (item) => item?.qortalAtAddress,
-              )}
-              setItems={(items: string[]) => {
-                setRequestData((prev) => {
-                  return {
-                    ...prev,
-                    crosschainAtInfo: items?.map((item) => {
-                      return {
-                        qortalAtAddress: item,
-                      };
-                    }),
-                  };
-                });
-              }}
-            />
-
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>
-              Enter a list of crosschain ATs. All the ATs need to be of the same
-              foreignBlockchain as the value selected in the field
-              "foreignBlockchain"
-            </Typography>
           </Box>
           <Spacer height="20px" />
           <Button

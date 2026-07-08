@@ -195,7 +195,6 @@ interface GetAccountNamesRequest {
             <Spacer height="5px" />
           </Box>
           <Spacer height="20px" />
-          <Spacer height="5px" />
           <Box
             sx={{
               padding: "10px",

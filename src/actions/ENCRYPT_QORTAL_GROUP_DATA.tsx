@@ -302,6 +302,29 @@ interface EncryptQortalGroupDataRequest {
               borderRadius: "5px",
             }}
           >
+            <Typography variant="h6">groupId</Typography>
+            <CustomInput
+              type="text"
+              placeholder="groupId"
+              value={requestData.groupId}
+              name="groupId"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Enter the groupId of the Qortal group.</Typography>
+          </Box>
+          <Spacer height="10px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
             <Typography variant="h6">isAdmins</Typography>
             <Spacer height="10px" />
             <Select
@@ -336,29 +359,6 @@ interface EncryptQortalGroupDataRequest {
               Mark isAdmins true if you want the group encrypted data to only be
               decrypted by admins of the group. The default is false.
             </Typography>
-          </Box>
-          <Spacer height="10px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">groupId</Typography>
-            <CustomInput
-              type="text"
-              placeholder="groupId"
-              value={requestData.groupId}
-              name="groupId"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter the groupId of the Qortal group.</Typography>
           </Box>
           <Spacer height="20px" />
           <Button

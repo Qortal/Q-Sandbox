@@ -115,6 +115,29 @@ interface NotificationAddRequest {
               borderRadius: "5px",
             }}
           >
+            <Typography variant="h6">message</Typography>
+            <CustomInput
+              type="text"
+              placeholder="message"
+              value={requestData.message}
+              name="message"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Enter the notification message to display.</Typography>
+          </Box>
+          <Spacer height="5px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
             <Typography variant="h6">notificationId</Typography>
             <CustomInput
               type="text"
@@ -131,29 +154,6 @@ interface NotificationAddRequest {
             <Typography>
               Enter a unique ID for this notification subscription.
             </Typography>
-          </Box>
-          <Spacer height="5px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">message</Typography>
-            <CustomInput
-              type="text"
-              placeholder="message"
-              value={requestData.message}
-              name="message"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter the notification message to display.</Typography>
           </Box>
           <Spacer height="20px" />
           <Button

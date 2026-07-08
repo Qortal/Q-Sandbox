@@ -142,6 +142,30 @@ interface SendCoinRequest {
               borderRadius: "5px",
             }}
           >
+            <Typography variant="h6">amount</Typography>
+
+            <CustomInput
+              type="number"
+              placeholder="amount"
+              value={requestData.amount}
+              name="amount"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Enter the amount.</Typography>
+          </Box>
+          <Spacer height="5px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
             <Typography variant="h6">coin</Typography>
             <Spacer height="10px" />
             <Select
@@ -205,30 +229,6 @@ interface SendCoinRequest {
             <Typography>
               For QORT, you can enter the Qortal Name instead of the address.
             </Typography>
-          </Box>
-          <Spacer height="5px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">amount</Typography>
-
-            <CustomInput
-              type="number"
-              placeholder="amount"
-              value={requestData.amount}
-              name="amount"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter the amount.</Typography>
           </Box>
 
           <Spacer height="20px" />

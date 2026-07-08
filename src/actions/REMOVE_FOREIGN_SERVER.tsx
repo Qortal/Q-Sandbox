@@ -219,52 +219,6 @@ interface RemoveForeignServerRequest {
               borderRadius: "5px",
             }}
           >
-            <Typography variant="h6">type</Typography>
-            <Spacer height="10px" />
-            <Select
-              size="small"
-              labelId="label-select-category"
-              id="id-select-category"
-              value={requestData?.type}
-              displayEmpty
-              onChange={(e: SelectChangeEvent<string>) =>
-                setRequestData((prev) => {
-                  return {
-                    ...prev,
-                    type: e.target.value,
-                  };
-                })
-              }
-              sx={{
-                width: "300px",
-              }}
-            >
-              <MenuItem value={""}>
-                <em>No type selected</em>
-              </MenuItem>
-              {connectionTypes?.map((feeType) => {
-                return (
-                  <MenuItem key={feeType.name} value={feeType.name}>
-                    {`${feeType.name}`}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Choose a connection type.</Typography>
-          </Box>
-          <Spacer height="10px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
             <Typography variant="h6">host</Typography>
             <CustomInput
               type="text"
@@ -302,6 +256,52 @@ interface RemoveForeignServerRequest {
             </FieldExplanation>
             <Spacer height="5px" />
             <Typography>Enter the port.</Typography>
+          </Box>
+          <Spacer height="10px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography variant="h6">type</Typography>
+            <Spacer height="10px" />
+            <Select
+              size="small"
+              labelId="label-select-category"
+              id="id-select-category"
+              value={requestData?.type}
+              displayEmpty
+              onChange={(e: SelectChangeEvent<string>) =>
+                setRequestData((prev) => {
+                  return {
+                    ...prev,
+                    type: e.target.value,
+                  };
+                })
+              }
+              sx={{
+                width: "300px",
+              }}
+            >
+              <MenuItem value={""}>
+                <em>No type selected</em>
+              </MenuItem>
+              {connectionTypes?.map((feeType) => {
+                return (
+                  <MenuItem key={feeType.name} value={feeType.name}>
+                    {`${feeType.name}`}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Choose a connection type.</Typography>
           </Box>
           <Spacer height="20px" />
           <Button

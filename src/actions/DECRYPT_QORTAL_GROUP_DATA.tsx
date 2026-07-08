@@ -189,6 +189,29 @@ export const DECRYPT_QORTAL_GROUP_DATA: React.FC<ComponentProps> = ({
               borderRadius: "5px",
             }}
           >
+            <Typography variant="h6">groupId</Typography>
+            <CustomInput
+              type="text"
+              placeholder="groupId"
+              value={requestData.groupId}
+              name="groupId"
+              onChange={handleChange}
+            />
+            <Spacer height="10px" />
+            <FieldExplanation>
+              <Typography>Required field</Typography>
+            </FieldExplanation>
+            <Spacer height="5px" />
+            <Typography>Enter the groupId of the Qortal group.</Typography>
+          </Box>
+          <Spacer height="10px" />
+          <Box
+            sx={{
+              padding: "10px",
+              outline: "1px solid var(--color3)",
+              borderRadius: "5px",
+            }}
+          >
             <Typography variant="h6">isAdmins</Typography>
             <Spacer height="10px" />
             <Select
@@ -222,29 +245,6 @@ export const DECRYPT_QORTAL_GROUP_DATA: React.FC<ComponentProps> = ({
             <Typography>
               Mark isAdmins true if the decrypted data was for admins only.
             </Typography>
-          </Box>
-          <Spacer height="10px" />
-          <Box
-            sx={{
-              padding: "10px",
-              outline: "1px solid var(--color3)",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">groupId</Typography>
-            <CustomInput
-              type="text"
-              placeholder="groupId"
-              value={requestData.groupId}
-              name="groupId"
-              onChange={handleChange}
-            />
-            <Spacer height="10px" />
-            <FieldExplanation>
-              <Typography>Required field</Typography>
-            </FieldExplanation>
-            <Spacer height="5px" />
-            <Typography>Enter the groupId of the Qortal group.</Typography>
           </Box>
           <Spacer height="20px" />
           <Button

@@ -159,96 +159,21 @@ export const SEARCH_TRANSACTIONS: React.FC = () => {
             borderRadius: "5px",
           }}
         >
-          <Typography variant="h6">txType</Typography>
-          <Spacer height="10px" />
-          <Select
-            size="small"
-            labelId="label-select-category"
-            id="id-select-category"
-            value={requestData?.txType[0] || ""}
-            displayEmpty
-            onChange={(e: SelectChangeEvent<string>) =>
-              setRequestData((prev) => {
-                return {
-                  ...prev,
-                  txType: [...prev?.txType, e.target.value],
-                };
-              })
-            }
-            sx={{
-              width: "300px",
-            }}
-          >
-            <MenuItem value={""}>
-              <em>No txType selected</em>
-            </MenuItem>
-            {txTypes?.map((txType) => {
-              return (
-                <MenuItem key={txType.name} value={txType.name}>
-                  {txType.name}
-                </MenuItem>
-              );
-            })}
-          </Select>
-          {requestData?.txType?.map((type, index) => {
-            return (
-              <Box
-                key={index}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                }}
-              >
-                <Typography>{type}</Typography>
-                <MuiButton
-                  onClick={() => {
-                    setRequestData((prev) => {
-                      const copyPrev = [...prev?.txType];
-                      copyPrev.splice(index, 1);
-
-                      return {
-                        ...prev,
-                        txType: copyPrev,
-                      };
-                    });
-                  }}
-                >
-                  Remove
-                </MuiButton>
-              </Box>
-            );
-          })}
-          <Spacer height="10px" />
-          <FieldExplanation>
-            <Typography>Optional field</Typography>
-          </FieldExplanation>
-        </Box>
-        <Spacer height="10px" />
-        <Box
-          sx={{
-            padding: "10px",
-            border: "1px solid var(--color3)",
-            borderRadius: "5px",
-          }}
-        >
-          <Typography variant="h6">startBlock</Typography>
+          <Typography variant="h6">address</Typography>
           <CustomInput
-            type="number"
-            placeholder="startBlock"
-            name="startBlock"
-            value={requestData.startBlock}
+            type="text"
+            placeholder="address"
+            name="address"
+            value={requestData.address}
             onChange={handleChange}
           />
           <Spacer height="10px" />
           <FieldExplanation>
             <Typography>Optional field</Typography>
-            <Typography>
-              Enter the starting block height of your search.
-            </Typography>
           </FieldExplanation>
         </Box>
         <Spacer height="10px" />
+
         <Box
           sx={{
             padding: "10px",
@@ -262,28 +187,6 @@ export const SEARCH_TRANSACTIONS: React.FC = () => {
             placeholder="blockLimit"
             name="blockLimit"
             value={requestData.blockLimit}
-            onChange={handleChange}
-          />
-          <Spacer height="10px" />
-          <FieldExplanation>
-            <Typography>Optional field</Typography>
-          </FieldExplanation>
-        </Box>
-        <Spacer height="10px" />
-
-        <Box
-          sx={{
-            padding: "10px",
-            border: "1px solid var(--color3)",
-            borderRadius: "5px",
-          }}
-        >
-          <Typography variant="h6">txGroupId</Typography>
-          <CustomInput
-            type="number"
-            placeholder="txGroupId"
-            name="txGroupId"
-            value={requestData.txGroupId}
             onChange={handleChange}
           />
           <Spacer height="10px" />
@@ -319,28 +222,6 @@ export const SEARCH_TRANSACTIONS: React.FC = () => {
             <Typography>Optional field</Typography>
           </FieldExplanation>
           <Spacer height="5px" />
-        </Box>
-        <Spacer height="10px" />
-
-        <Box
-          sx={{
-            padding: "10px",
-            border: "1px solid var(--color3)",
-            borderRadius: "5px",
-          }}
-        >
-          <Typography variant="h6">address</Typography>
-          <CustomInput
-            type="text"
-            placeholder="address"
-            name="address"
-            value={requestData.address}
-            onChange={handleChange}
-          />
-          <Spacer height="10px" />
-          <FieldExplanation>
-            <Typography>Optional field</Typography>
-          </FieldExplanation>
         </Box>
         <Spacer height="10px" />
 
@@ -410,6 +291,127 @@ export const SEARCH_TRANSACTIONS: React.FC = () => {
             <MenuItem value="true">true</MenuItem>
             <MenuItem value="false">false</MenuItem>
           </Select>
+        </Box>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
+          <Typography variant="h6">startBlock</Typography>
+          <CustomInput
+            type="number"
+            placeholder="startBlock"
+            name="startBlock"
+            value={requestData.startBlock}
+            onChange={handleChange}
+          />
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Optional field</Typography>
+            <Typography>
+              Enter the starting block height of your search.
+            </Typography>
+          </FieldExplanation>
+        </Box>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
+          <Typography variant="h6">txGroupId</Typography>
+          <CustomInput
+            type="number"
+            placeholder="txGroupId"
+            name="txGroupId"
+            value={requestData.txGroupId}
+            onChange={handleChange}
+          />
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Optional field</Typography>
+          </FieldExplanation>
+        </Box>
+        <Spacer height="10px" />
+
+        <Box
+          sx={{
+            padding: "10px",
+            border: "1px solid var(--color3)",
+            borderRadius: "5px",
+          }}
+        >
+          <Typography variant="h6">txType</Typography>
+          <Spacer height="10px" />
+          <Select
+            size="small"
+            labelId="label-select-category"
+            id="id-select-category"
+            value={requestData?.txType[0] || ""}
+            displayEmpty
+            onChange={(e: SelectChangeEvent<string>) =>
+              setRequestData((prev) => {
+                return {
+                  ...prev,
+                  txType: [...prev?.txType, e.target.value],
+                };
+              })
+            }
+            sx={{
+              width: "300px",
+            }}
+          >
+            <MenuItem value={""}>
+              <em>No txType selected</em>
+            </MenuItem>
+            {txTypes?.map((txType) => {
+              return (
+                <MenuItem key={txType.name} value={txType.name}>
+                  {txType.name}
+                </MenuItem>
+              );
+            })}
+          </Select>
+          {requestData?.txType?.map((type, index) => {
+            return (
+              <Box
+                key={index}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                }}
+              >
+                <Typography>{type}</Typography>
+                <MuiButton
+                  onClick={() => {
+                    setRequestData((prev) => {
+                      const copyPrev = [...prev?.txType];
+                      copyPrev.splice(index, 1);
+
+                      return {
+                        ...prev,
+                        txType: copyPrev,
+                      };
+                    });
+                  }}
+                >
+                  Remove
+                </MuiButton>
+              </Box>
+            );
+          })}
+          <Spacer height="10px" />
+          <FieldExplanation>
+            <Typography>Optional field</Typography>
+          </FieldExplanation>
         </Box>
         <Spacer height="10px" />
 
